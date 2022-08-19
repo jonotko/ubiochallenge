@@ -1,4 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express'
+import helmet from "helmet";
 import { json, urlencoded } from 'body-parser'
 import morgan from 'morgan'
 import cors from 'cors'
@@ -9,6 +10,7 @@ import HttpException from './utils/exceptions'
 export const app = express()
 
 const port = 3000;
+app.use(helmet());
 
 app.disable('x-powered-by')
 
