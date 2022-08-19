@@ -9,7 +9,7 @@ import HttpException from './utils/exceptions'
 
 export const app = express()
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.use(helmet());
 
 app.disable('x-powered-by')
@@ -20,6 +20,10 @@ app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
 app.use('/api', groupRouter)
+
+app.get('/', (req: Request, res: Response) => {
+	res.json({message: 'Welcome'})
+})
 
 app.use((err: HttpException ,req: Request, res: Response, next: NextFunction) => {
 	const message = err.message || 'Something went wrong'
@@ -32,7 +36,7 @@ export const start = async () => {
     await useDb()
 		console.log('Connected to mongo')
     app.listen(port, () => {
-      console.log(`REST API on http://localhost:${port}/api`)
+      console.log(`REST API on running: at /api`)
     })
   } catch (error) {
     console.error(`Error occured: ${error}`)
