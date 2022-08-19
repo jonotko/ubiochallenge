@@ -9,6 +9,9 @@
     "build": "rm -rf build && tsc --build",
     "start": "node build/index.js"
   },
+  "engines": {
+    "node": "16"
+  },
   "dependencies": {
     "@types/morgan": "^1.9.3",
     "body-parser": "^1.20.0",

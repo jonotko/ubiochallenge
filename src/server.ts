@@ -36,7 +36,7 @@ export const start = async () => {
     await useDb()
 		console.log('Connected to mongo')
     app.listen(port, () => {
-      console.log(`REST API on running: at /api`)
+      console.log(`REST API running on Port:${port}`)
     })
   } catch (error) {
     console.error(`Error occured: ${error}`)
