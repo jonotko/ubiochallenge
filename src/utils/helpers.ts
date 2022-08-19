@@ -22,7 +22,7 @@ export const createOne = (model: Model<any>) => async (data: Record<string, unkn
 
 export const getMany = (model: Model<any>) => async (filter: Record<string, unknown>) => {
 
-	const results = await model.find(filter).exec()
+	let results = await model.find(filter).select('-_id').lean().exec()
 
 	return results
 }
